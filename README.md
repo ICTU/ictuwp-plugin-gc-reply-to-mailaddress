@@ -2,9 +2,9 @@
 This plugin sets the reply to address for all email sent from the server.
 
 Which address is used?
-* - If a GC_REPLY_MAIL is set (anywhere), use that address
-* - else, if a mail_address is set through the SMTP plugin (wpmailsmtp), use that address
-* - else, use 'admin_email' address
+* If a GC_REPLY_MAIL is set (anywhere), use that address
+* else, if a mail_address is set through the SMTP plugin (wpmailsmtp), use that address
+* else, use 'admin_email' address
 
 
 ## Current version:
