@@ -21,3 +21,8 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+.idea/.name
+.idea/ICTU - reply-to-mailaddress.iml
+.idea/modules.xml
+.idea/vcs.xml
