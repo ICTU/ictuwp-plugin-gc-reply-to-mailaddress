@@ -8,7 +8,7 @@
  * Plugin Name:         ICTU / Gebruiker Centraal / Set reply-to email_address
  * Plugin URI:          https://github.com/ICTU/ictuwp-plugin-gc-reply-to-mail_address
  * Description:         Filter om het antwoord-adres voor e-mail te corrigeren. Gebruikt GC_REPLY_MAIL of de instellingen van SMTP plugin (wpmailsmtp).
- * Version:             0.0.2
+ * Version:             0.0.3
  * Version description: Fix thema_sort_order
  * Author:              Paul van Buuren
  * Author URI:          https://github.com/paulvanbuuren
