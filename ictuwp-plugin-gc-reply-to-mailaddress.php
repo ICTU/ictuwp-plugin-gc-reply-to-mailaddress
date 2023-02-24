@@ -8,8 +8,8 @@
  * Plugin Name:         ICTU / Gebruiker Centraal / Set reply-to email_address
  * Plugin URI:          https://github.com/ICTU/ictuwp-plugin-gc-reply-to-mail_address
  * Description:         Filter om het antwoord-adres voor e-mail te corrigeren. Gebruikt GC_REPLY_MAIL of de instellingen van SMTP plugin (wpmailsmtp).
- * Version:             1.0.1
- * Version description: Fix thema_sort_order
+ * Version:             1.0.2
+ * Version description: Added extra check for the constant GC_REPLY_MAIL.
  * Author:              Paul van Buuren
  * Author URI:          https://github.com/paulvanbuuren
  * License:             GPL-2.0+
@@ -44,9 +44,16 @@ function gc_set_reply_mail_address( $args ) {
 
 	if ( defined( 'GC_REPLY_MAIL' ) ) {
 		// somewhere the constant GC_REPLY_MAIL is set
-		$reply_to_mail = GC_REPLY_MAIL;
-		$reply_to_name = $reply_to_mail;
+		if ( filter_var( GC_REPLY_MAIL, FILTER_VALIDATE_EMAIL ) ) {
+			// good, this should be a valid mail address
+			$reply_to_mail = GC_REPLY_MAIL;
+			$reply_to_name = $reply_to_mail;
+		} else {
+			if ( WP_DEBUG ) {
+				error_log( 'gc_set_reply_mail_address: invalid mailadress in GC_REPLY_MAIL: ' . GC_REPLY_MAIL );
+			}
 
+		}
 	} else {
 		// Get the proper send-from mail address.
 		// We try to get it from the SMTP plugin settings
@@ -64,6 +71,10 @@ function gc_set_reply_mail_address( $args ) {
 				} else {
 					$reply_to_name = $reply_to_mail;
 				}
+			}
+		} else {
+			if ( WP_DEBUG ) {
+				error_log( 'gc_set_reply_mail_address: no valid SMTP settings found.' );
 			}
 		}
 	}
@@ -88,7 +99,7 @@ function gc_set_reply_mail_address( $args ) {
 	// append replyto to the headers
 	$args['headers'][] = $reply_to;
 	if ( WP_DEBUG ) {
-		error_log( 'reply address set to: ' . esc_html( $reply_to ) );
+		error_log( 'gc_set_reply_mail_address: reply address set to: ' . esc_html( $reply_to ) );
 	}
 
 	return $args;
