@@ -1,0 +1,14 @@
+{
+  "name": "ICTU/ictuwp-plugin-gc-reply-to-mailaddress",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0",
+  "description": "Filter to set the reply-to email address for mail from the GC server",
+  "homepage": "https://www.gebruikercentraal.nl",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://github.com/paulvanbuuren"
+    }
+  ]
+}
