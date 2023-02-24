@@ -2,5 +2,5 @@
 This plugin sets the reply to address for all email sent from the server.
 
 ## Current version:
-* 0.0.1 - Initial setup
+* 0.0.2 - Added filter for mail headers.
 
